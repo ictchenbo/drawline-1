@@ -1,0 +1,53 @@
+
+Initial version of Drawline
+	Author: Jiyuan Lin
+	Email: linjiyuan90@gmail.com
+
+Support:
+	CONCEPT, REGEX,	MCONCEPT, MCONCEPT_RULE
+	OR, AND, ORD, SENT, DIST_K
+
+Compile:
+	make
+or if you only want to make libdrawline.a,
+	make lib
+and libdrawline.a will be in lib directory.
+
+To comiple libdrawline.a wih your own cpp, you need these files:
+	libdrawline.a, drawline.h, drawline_ds.h
+and include drawline.h in your own cpp, then compile:
+	g++ your.cpp -oyour -ldrawline -Llib
+
+src/drawline_driver.cpp is an example of using drawline.
+
+
+Usage:
+	./drawline cfg txt >out 2>err
+
+
+There are two datasets to test, please execute run.sh.
+The results will be *.out, *.err.
+(*.out record the extract results, while *.err record time consumptions)
+When compiled with -O2, the total time is 6s for exception datasets, and 
+without -O2, it needs 23s.
+Note dataset MTIE, some configurations are not supported so the result may be 
+a little different with *.ref.
+
+
+Note
+	CONCEPT:CTY:中国
+	CONCEPT:GOV:政府
+	MCONCEPT:ALL:CTYGOV
+	#              ^
+	# Don't add space between CTY, GOV, otherwise the space will be treated as 
+	# a character need to match
+	# Don't worry, Drawline will extract 中国政府.
+	# Don't add extra spaces(that you don't want to match) at the begin/end.
+
+
+TODO list:
+
+1. Special case of sentence delimiter, for example,
+   	"Number 123.45 is", should not treat '.' as sentence delimiter here.
+
+

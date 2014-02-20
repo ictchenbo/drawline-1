@@ -1,0 +1,10 @@
+
+#+LaTeX_CLASS: cjk-article
+#+LaTeX_HEADER: \usepackage[margin=3cm]{geometry}
+
+#+TITLE: /Drawline/ 设计文档
+#+AUTHOR: [[mailto:linjiyuan90@gmail.com][林基远]]
+
+
+
+最后输出结果时，自定向下找出叶子节点
